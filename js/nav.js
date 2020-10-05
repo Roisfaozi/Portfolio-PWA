@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     // Activate sidebar nav
     const elems = document.querySelectorAll(".sidenav");
     M.Sidenav.init(elems);
@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     elm.innerHTML = http.responseText;
                 });
 
-                document.querySelectorAll(".sidenav a, .topnav a").forEach(function (elm) {
-                    elm.addEventListener("click", function (event) {
+                document.querySelectorAll(".sidenav a, .topnav a").forEach((elm) => {
+                    elm.addEventListener("click", (event) => {
                         let sidenav = document.querySelector(".sidenav");
                         M.Sidenav.getInstance(sidenav).close();
 
@@ -32,7 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 let page = window.location.hash.substr(1);
-if (page == "") page = "home";
+if (page == "")
+    page = "home";
 loadPage(page);
 
 function loadPage(page) {
