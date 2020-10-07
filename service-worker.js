@@ -1,8 +1,9 @@
-const CACHE_NAME = "fristpwa-v3";
+const CACHE_NAME = "fristpwa-v4";
 let urlToCache = [
     "/",
     "/nav.html",
     "/index.html",
+    "/sw-register.js",
     "/pages/home.html",
     "/pages/about.html",
     "/pages/contact.html",
@@ -30,7 +31,11 @@ let urlToCache = [
     "/img/jumbotron.jpg",
     "/img/medical.jpg",
     "/img/profile.jpg",
-    "/icon.png"
+    "/icon-512.png",
+    "/icon-192.png",
+    "/icon-384.png",
+    "/icon-256.png",
+    "/manifest.json"
 ];
 
 self.addEventListener("install", (event) => {
@@ -49,7 +54,7 @@ self.addEventListener("fetch", (event) => {
             .match(event.request, { cacheName: CACHE_NAME })
             .then((response) => {
                 if (response) {
-                    console.log("ServiceWorker: Gnakan dari cache: ", response.url);
+                    console.log("ServiceWorker: Gunakan dari cache: ", response.url);
                     return response;
                 }
 
@@ -64,7 +69,7 @@ self.addEventListener("activate", (event) => {
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
-                    if (cacheName != CACHE_NAME) {
+                    if (cacheName !== CACHE_NAME) {
                         console.log("serviceWorker: cache" + cacheName + "dihapus");
                         return caches.delete(cacheName);
                     }

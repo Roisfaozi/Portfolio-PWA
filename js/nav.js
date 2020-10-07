@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function loadNav() {
         const http = new XMLHttpRequest();
         http.onreadystatechange = function () {
-            if (this.readyState == 4) {
+            if (this.readyState === 4) {
                 if (this.status != 200) return;
 
                 // Muat daftar tautan menu
@@ -52,7 +52,7 @@ function loadPage(page) {
         }
     };
 
-    xhttp.open("GET", "pages/" + page + ".html", true);
+    xhttp.open("GET", `pages/${page}.html`, true);
     xhttp.send();
 }
 
